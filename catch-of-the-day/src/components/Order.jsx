@@ -9,12 +9,16 @@ class Order extends Component {
 
     if (isAvailable) {
       return (
-        <li>
+        <li key={key}>
           {count} lbs {fish.name} {formatPrice(count * fish.price)}
         </li>
       );
     } else {
-      return <li>Sorry {fish ? fish.name : "fish"} is no longer available</li>;
+      return (
+        <li key={key}>
+          Sorry {fish ? fish.name : "fish"} is no longer available
+        </li>
+      );
     }
   };
 
@@ -35,7 +39,7 @@ class Order extends Component {
     return (
       <div className="order-wrap">
         <h2>Order</h2>
-        <ul>{orderIds.map(this.renderOrderLine)}</ul>
+        <ul className="order">{orderIds.map(this.renderOrderLine)}</ul>
         <div className="total">
           <strong>{formatPrice(total)}</strong>
         </div>
