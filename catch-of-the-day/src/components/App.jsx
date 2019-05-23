@@ -53,6 +53,12 @@ class App extends Component {
     this.setState({ fishes });
   };
 
+  deleteFish = key => {
+    const fishes = { ...this.state.fishes };
+    fishes[key] = null;
+    this.setState({ fishes });
+  };
+
   addToOrder = fishKey => {
     console.log("Adding fish to order");
 
@@ -85,6 +91,7 @@ class App extends Component {
           fishes={this.state.fishes}
           addFish={this.addFish}
           updateFish={this.updateFish}
+          deleteFish={this.deleteFish}
           loadSampleFishes={this.loadSampleFishes}
         />
       </div>

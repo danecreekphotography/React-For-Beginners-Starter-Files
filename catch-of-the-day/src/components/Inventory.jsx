@@ -12,6 +12,7 @@ class Inventory extends Component {
             key={key}
             fishId={key}
             updateFish={this.props.updateFish}
+            deleteFish={this.props.deleteFish}
             fish={this.props.fishes[key]}
           />
         ))}
