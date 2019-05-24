@@ -7,6 +7,11 @@ class Order extends Component {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
     const isAvailable = fish && fish.status === "available";
+    const transitionOptions = {
+      classNames: "order",
+      key: key,
+      timeout: { enter: 250, exit: 250 }
+    };
 
     if (!fish) {
       return null;
@@ -14,11 +19,7 @@ class Order extends Component {
 
     if (isAvailable) {
       return (
-        <CSSTransition
-          classNames="order"
-          key={key}
-          timeout={{ enter: 250, exit: 250 }}
-        >
+        <CSSTransition {...transitionOptions}>
           <li key={key}>
             <span>
               <TransitionGroup component="span" className="count">
@@ -41,11 +42,7 @@ class Order extends Component {
       );
     } else {
       return (
-        <CSSTransition
-          classNames="order"
-          key={key}
-          timeout={{ enter: 250, exit: 250 }}
-        >
+        <CSSTransition {...transitionOptions}>
           <li key={key}>
             Sorry {fish ? fish.name : "fish"} is no longer available
             <button onClick={() => this.props.deleteFromOrder(key)}>
